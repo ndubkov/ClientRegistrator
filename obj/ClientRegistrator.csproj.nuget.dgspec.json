@@ -43,6 +43,20 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Ghostscript.NET": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "PDFsharp-MigraDoc-GDI": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
