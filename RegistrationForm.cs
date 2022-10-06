@@ -1,10 +1,10 @@
+п»їusing Ghostscript.NET.Processor;
+using Newtonsoft.Json;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf.IO;
-using Newtonsoft.Json;
-using Ghostscript.NET.Processor;
 
 namespace ClientRegistrator
 {
@@ -40,7 +40,7 @@ namespace ClientRegistrator
             var login = tb_login.Text.ToString();
             var phoneNumber = GetPhoneNumber();
             var password = new Random().Next(1, 999999).ToString("000000"); // Generate random 6-digit code
-            var balanceText = tb_balance.Text.ToString().Replace(".", ","); 
+            var balanceText = tb_balance.Text.ToString().Replace(".", ",");
 
             if (!validateForm(login, firstName, lastName, password, phoneNumber, balanceText))
             {
@@ -85,12 +85,12 @@ namespace ClientRegistrator
                 }
                 else
                 {
-                    MessageBox.Show("Не удалось создать пользователя.\n\n" + response.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.\n\n" + response.Message, "РћС€РёР±РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Не удалось создать пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ", "РћС€РёР±РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -174,22 +174,22 @@ namespace ClientRegistrator
             var errorProvider = new ErrorProvider();
             if (string.IsNullOrEmpty(firstname))
             {
-                ShowValidationErorr("Заполните имя");
+                ShowValidationErorr("Р—Р°РїРѕР»РЅРёС‚Рµ РёРјСЏ");
                 return false;
             }
             if (string.IsNullOrEmpty(lastname))
             {
-                ShowValidationErorr("Заполните фамилию");
+                ShowValidationErorr("Р—Р°РїРѕР»РЅРёС‚Рµ С„Р°РјРёР»РёСЋ");
                 return false;
             }
             if (string.IsNullOrEmpty(phone))
             {
-                ShowValidationErorr("Заполните телефон");
+                ShowValidationErorr("Р—Р°РїРѕР»РЅРёС‚Рµ С‚РµР»РµС„РѕРЅ");
                 return false;
             }
             if (string.IsNullOrEmpty(login))
             {
-                ShowValidationErorr("Логин должен быть не пустым");
+                ShowValidationErorr("Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ РїСѓСЃС‚С‹Рј");
                 return false;
             }
             try
@@ -198,7 +198,7 @@ namespace ClientRegistrator
             }
             catch (Exception e)
             {
-                ShowValidationErorr("Баланс пустой или неправильный формат числа");
+                ShowValidationErorr("Р‘Р°Р»Р°РЅСЃ РїСѓСЃС‚РѕР№ РёР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ С‡РёСЃР»Р°");
                 return false;
             }
             return true;
@@ -234,7 +234,7 @@ namespace ClientRegistrator
             }
             catch (Exception e)
             {
-                MessageBox.Show("Ошибка при печати чека. Пользователь БЫЛ ЗАРЕГИСТРИРОВАН. Установите пароль вручную через панель icafe\n\n" + e.Message.ToString(), "Ошибка печати", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("РћС€РёР±РєР° РїСЂРё РїРµС‡Р°С‚Рё С‡РµРєР°. РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р‘Р«Р› Р—РђР Р•Р“РРЎРўР РР РћР’РђРќ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РїР°СЂРѕР»СЊ РІСЂСѓС‡РЅСѓСЋ С‡РµСЂРµР· РїР°РЅРµР»СЊ icafe\n\n" + e.Message.ToString(), "РћС€РёР±РєР° РїРµС‡Р°С‚Рё", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -263,7 +263,7 @@ namespace ClientRegistrator
 
         private static void ShowValidationErorr(string message)
         {
-            MessageBox.Show(message, "Ошибка заполнения формы", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(message, "РћС€РёР±РєР° Р·Р°РїРѕР»РЅРµРЅРёСЏ С„РѕСЂРјС‹", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btn_test_print_Click(object sender, EventArgs e)
